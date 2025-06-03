@@ -1,7 +1,7 @@
 [project]
-name = "interrupt_workshop"
+name = "agents_from_scratch"
 version = "0.1.0"
-description = "Workshop for Interrupt Conference"
+description = "Build an e-mail assistant from scratch"
 requires-python = ">=3.11"
 dependencies = [
     "langchain>=0.3.9",
@@ -21,6 +21,7 @@ dependencies = [
     "python-dotenv",
     "pyppeteer",
     "html2text",
+    "rich",
 ]
 
 [project.optional-dependencies]

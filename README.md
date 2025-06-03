@@ -44,7 +44,22 @@ export LANGSMITH_TRACING=true
 export OPENAI_API_KEY=your_openai_api_key
 ```
 
-### Create a virtual environment and activate it
+### Package Installation
+
+**Recommended: Using uv (faster and more reliable)**
+
+```shell
+# Install uv if you haven't already
+pip install uv
+
+# Install the package with development dependencies
+uv sync --extra dev
+
+# Activate the virtual environment
+source .venv/bin/activate
+```
+
+**Alternative: Using pip**
 
 ```shell
 $ python3 -m venv .venv
@@ -55,7 +70,7 @@ $ python3 -m pip install --upgrade pip
 $ pip install -e .
 ```
 
-> **⚠️ IMPORTANT**: Do not skip the `pip install -e .` step! This editable install is **required** for the notebooks to work correctly. Without it, you'll get `ModuleNotFoundError: No module named 'email_assistant'` errors when running the notebooks.
+> **⚠️ IMPORTANT**: Do not skip the package installation step! This editable install is **required** for the notebooks to work correctly. The package is installed as `interrupt_workshop` with import name `email_assistant`, allowing you to import from anywhere with `from email_assistant import ...`
 
 ## Structure 
 

@@ -11,6 +11,18 @@ This repository demonstrates building agents using LangGraph, focusing on an ema
 
 ## Environment Setup
 
+**Recommended: Using uv (faster and more reliable)**
+
+```bash
+# Install uv if you haven't already
+pip install uv
+
+# Install the package with development dependencies
+uv sync --extra dev
+```
+
+**Alternative: Using pip**
+
 ```bash
 # Create and activate a virtual environment
 python3 -m venv .venv
@@ -22,6 +34,8 @@ python3 -m pip install --upgrade pip
 # Install the package in editable mode
 pip install -e .
 ```
+
+The package is installed as `interrupt_workshop` with import name `email_assistant`, allowing you to import from anywhere with `from email_assistant import ...`
 
 ## Agent Implementations
 
