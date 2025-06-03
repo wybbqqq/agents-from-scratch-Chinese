@@ -5,9 +5,9 @@ import os
 import matplotlib.pyplot as plt
 from datetime import datetime
 
-from eval.email_dataset import examples_triage
+from email_assistant.eval.email_dataset import examples_triage
 
-from src.email_assistant.email_assistant import email_assistant
+from email_assistant.email_assistant import email_assistant
 
 # Client 
 client = Client()

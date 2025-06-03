@@ -7,7 +7,7 @@ project_root = Path(__file__).parent.parent
 sys.path.append(str(project_root))
 
 import pytest
-from eval.email_dataset import email_inputs, expected_tool_calls
+from email_assistant.eval.email_dataset import email_inputs, expected_tool_calls
 from email_assistant.utils import format_messages_string
 from email_assistant.email_assistant import email_assistant
 from email_assistant.utils import extract_tool_calls

@@ -14,16 +14,16 @@ from langgraph.checkpoint.memory import MemorySaver
 from langgraph.store.memory import InMemoryStore
 from langgraph.types import Command
 
-from src.email_assistant.utils import extract_tool_calls, format_messages_string
-from eval.prompts import RESPONSE_CRITERIA_SYSTEM_PROMPT
+from email_assistant.utils import extract_tool_calls, format_messages_string
+from email_assistant.eval.prompts import RESPONSE_CRITERIA_SYSTEM_PROMPT
 
 from dotenv import load_dotenv
 load_dotenv(".env", override=True)
 
 # Force reload the email_dataset module to ensure we get the latest version
-if "eval.email_dataset" in sys.modules:
-    importlib.reload(sys.modules["eval.email_dataset"])
-from eval.email_dataset import email_inputs, email_names, response_criteria_list, triage_outputs_list, expected_tool_calls
+if "email_assistant.eval.email_dataset" in sys.modules:
+    importlib.reload(sys.modules["email_assistant.eval.email_dataset"])
+from email_assistant.eval.email_dataset import email_inputs, email_names, response_criteria_list, triage_outputs_list, expected_tool_calls
     
 class CriteriaGrade(BaseModel):
     """Score the response against specific criteria."""
@@ -47,10 +47,10 @@ def set_agent_module(agent_module_name):
     print(f"Using agent module: {AGENT_MODULE}")
     
     # Force reload the module to ensure we get the latest code
-    if f"src.email_assistant.{AGENT_MODULE}" in sys.modules:
-        importlib.reload(sys.modules[f"src.email_assistant.{AGENT_MODULE}"])
+    if f"email_assistant.{AGENT_MODULE}" in sys.modules:
+        importlib.reload(sys.modules[f"email_assistant.{AGENT_MODULE}"])
     
-    agent_module = importlib.import_module(f"src.email_assistant.{AGENT_MODULE}")
+    agent_module = importlib.import_module(f"email_assistant.{AGENT_MODULE}")
     return AGENT_MODULE
 
 def setup_assistant() -> Tuple[Any, Dict[str, Any], InMemoryStore]:
