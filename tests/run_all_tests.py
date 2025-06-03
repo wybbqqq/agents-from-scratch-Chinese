@@ -7,7 +7,7 @@ from pathlib import Path
 
 def main():
     # LangSmith suite / project name
-    langsmith_project = "E-Mail Assistant Testing"
+    langsmith_project = "E-mail Tool Calling and Response Evaluation"
 
     # Parse command line arguments
     parser = argparse.ArgumentParser(description="Run tests for email assistant implementations")
@@ -23,10 +23,13 @@ def main():
     # The --rich-output flag is kept for backward compatibility
     
     # Define available implementations
+    # Note: email_assistant_hitl and email_assistant_hitl_memory are not included because:
+    # 1. They include the Question tool, which is not included in our evaluation dataset ground truth
+    # 2. The hardcoded resume_command = Command(resume=[{"type": "accept", "args": ""}]) in test_response.py
+    #    is invalid when the Question tool is encountered, causing the test to loop indefinitely
+    # These implementations would need updated test datasets and handling logic to be testable
     implementations = [
         "email_assistant",
-        "email_assistant_hitl",
-        "email_assistant_hitl_memory",
     ]
     
     # Determine which implementations to test

@@ -147,36 +147,8 @@ def test_email_dataset_tool_calls(email_input, email_name, criteria, expected_ca
     if AGENT_MODULE == "email_assistant":
         # Workflow agent takes email_input directly
         result = email_assistant.invoke({"email_input": email_input}, config=thread_config)
-        
-    elif AGENT_MODULE in ["email_assistant_hitl", "email_assistant_hitl_memory"]:
-        # HITL agents need special handling with multiple interrupts
-        
-        # Create a function to process chunks and handle interrupts recursively
-        def process_stream(input_data):
-            result = {}
-            # Stream and process all chunks
-            for chunk in email_assistant.stream(input_data, config=thread_config):
-                # Update result with chunk data
-                result.update(chunk)
-                # If we hit an interrupt, handle it with accept and continue
-                if "__interrupt__" in chunk:
-                    # Create accept command
-                    resume_command = Command(resume=[{"type": "accept", "args": ""}])
-                    # Recursively process the accept command
-                    interrupt_result = process_stream(resume_command)
-                    # Update result with interrupt processing result
-                    result.update(interrupt_result)
-            return result
-            
-        # Start processing with the email input
-        process_stream({"email_input": email_input})
     else:
-        # Other agents take email_input directly but will use interrupt
-        _ = run_initial_stream(email_assistant, email_input, thread_config)
-        
-        # Provide feedback and resume the graph with 'accept'
-        resume_command = Command(resume=[{"type": "accept", "args": ""}])
-        _ = run_stream_with_command(email_assistant, resume_command, thread_config)
+        raise ValueError(f"Unsupported agent module: {AGENT_MODULE}. Only 'email_assistant' is supported in automated testing.")
         
     # Get the final state
     state = email_assistant.get_state(thread_config)
@@ -223,36 +195,8 @@ def test_response_criteria_evaluation(email_input, email_name, criteria, expecte
     if AGENT_MODULE == "email_assistant":
         # Workflow agent takes email_input directly
         result = email_assistant.invoke({"email_input": email_input}, config=thread_config)
-        
-    elif AGENT_MODULE in ["email_assistant_hitl", "email_assistant_hitl_memory"]:
-        # HITL agents need special handling with multiple interrupts
-        
-        # Create a function to process chunks and handle interrupts recursively
-        def process_stream(input_data):
-            result = {}
-            # Stream and process all chunks
-            for chunk in email_assistant.stream(input_data, config=thread_config):
-                # Update result with chunk data
-                result.update(chunk)
-                # If we hit an interrupt, handle it with accept and continue
-                if "__interrupt__" in chunk:
-                    # Create accept command
-                    resume_command = Command(resume=[{"type": "accept", "args": ""}])
-                    # Recursively process the accept command
-                    interrupt_result = process_stream(resume_command)
-                    # Update result with interrupt processing result
-                    result.update(interrupt_result)
-            return result
-            
-        # Start processing with the email input
-        process_stream({"email_input": email_input})
     else:
-        # Other agents take email_input directly but will use interrupt
-        _ = run_initial_stream(email_assistant, email_input, thread_config)
-        
-        # Provide feedback and resume the graph with 'accept'
-        resume_command = Command(resume=[{"type": "accept", "args": ""}])
-        _ = run_stream_with_command(email_assistant, resume_command, thread_config)
+        raise ValueError(f"Unsupported agent module: {AGENT_MODULE}. Only 'email_assistant' is supported in automated testing.")
         
     # Get the final state
     state = email_assistant.get_state(thread_config)

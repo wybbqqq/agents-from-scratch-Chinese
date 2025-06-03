@@ -206,7 +206,7 @@ def interrupt_handler(state: State) -> Command[Literal["llm_call", "__end__"]]:
         original_email_markdown = format_email_markdown(subject, author, to, email_thread)
         
         # Format tool call for display and prepend the original email
-        tool_display = format_for_display(state, tool_call)
+        tool_display = format_for_display(tool_call)
         description = original_email_markdown + tool_display
 
         # Configure what actions are allowed in Agent Inbox

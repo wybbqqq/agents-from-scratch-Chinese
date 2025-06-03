@@ -9,7 +9,20 @@ This repository demonstrates building agents using LangGraph, focusing on an ema
 - Incorporate human feedback
 - Learn from past interactions
 
+
 ## Environment Setup
+
+**Recommended: Using uv (faster and more reliable)**
+
+```bash
+# Install uv if you haven't already
+pip install uv
+
+# Install the package with development dependencies
+uv sync --extra dev
+```
+
+**Alternative: Using pip**
 
 ```bash
 # Create and activate a virtual environment

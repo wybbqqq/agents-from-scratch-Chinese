@@ -130,24 +130,14 @@ The full implementation of the Gmail integration is in [src/email_assistant/emai
 
 ## Running Tests
 
-The repository includes an automated test suite to evaluate the email assistant implementations. Tests verify correct tool usage and response quality using LangSmith for tracking.
+The repository includes an automated test suite to evaluate the email assistant. 
+
+Tests verify correct tool usage and response quality using LangSmith for tracking.
 
 ### Running Tests with [run_all_tests.py](/tests/run_all_tests.py)
 
-The test runner supports testing different implementations of the email assistant:
-
 ```shell
-# Run tests for the default implementation (email_assistant)
 python tests/run_all_tests.py
-
-# Run tests for a specific implementation
-python tests/run_all_tests.py --implementation email_assistant_hitl
-
-# Run tests for all available implementations
-python tests/run_all_tests.py --all
-
-# Add a specific experiment name for LangSmith tracking
-python tests/run_all_tests.py --experiment-name "Custom Test Run"
 ```
 
 ### Test Results
@@ -161,9 +151,6 @@ Test results are logged to LangSmith under the project name specified in your `.
 
 The available implementations for testing are:
 - `email_assistant` - Basic email assistant
-- `email_assistant_hitl` - Human-in-the-loop version
-- `email_assistant_hitl_memory` - Memory-enabled HITL version
-- `email_assistant_hitl_memory_gmail` - Gmail-integrated version
 
 ### Testing Notebooks
 
