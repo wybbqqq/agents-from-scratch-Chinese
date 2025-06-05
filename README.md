@@ -120,7 +120,7 @@ This notebook shows how to add memory to the email assistant, allowing it to lea
 
 The above notebooks using mock email and calendar tools. 
 
-### Gmail Integration 
+### Gmail Integration and Deployment
 
 Set up Google API credentials following the instructions in [Gmail Tools README](src/email_assistant/tools/gmail/README.md).
 
