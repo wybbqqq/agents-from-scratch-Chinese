@@ -1,4 +1,10 @@
-# Agents From Scratch 
+# Agents From Scratch - Chinese
+
+全英文的项目可能对英文基础薄弱的同学来说门槛较高，加上我也是初学者，就想着能不能在解读项目的同时把自己的理解做成注释，一方便加深自己对项目的理解，二方便大家的学习，所以有了这个仓库。
+
+我的主要工作在notebooks_Chinese文件夹里，其余部分并未更改。
+
+-------------以下是原文-----------------
 
 The repo is a guide to building agents from scratch. It builds up to an ["ambient"](https://blog.langchain.dev/introducing-ambient-agents/) agent that can manage your email with connection to the Gmail API. It's grouped into 4 sections, each with a notebook and accompanying code in the `src/email_assistant` directory. These section build from the basics of agents, to agent evaluation, to human-in-the-loop, and finally to memory. These all come together in an agent that you can deploy, and the principles can be applied to other agents across a wide range of tasks. 
 
